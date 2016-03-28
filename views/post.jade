@@ -1,0 +1,19 @@
+doctype html
+html
+    head
+        title= post.post_title
+        meta(charset="utf-8")
+        link(href="/css/style.css", rel="stylesheet")
+    body.home.blog
+        header#masthead.site-header
+        div#content.site-content
+            div#primary.content-area
+                main#main.site-main
+                    article(id="post-" + post.ID, class="post post-275 post type-post status-publish format-standard")
+                        div.thumbnail-wrap
+                        header.entry-header
+                            div.post-symbol
+                            h2.entry-title=post.post_title
+                            div.entry-meta
+                                span.posted-on= "27/07/2016"
+                        div.entry-content!=post.post_content
