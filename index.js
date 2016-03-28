@@ -17,6 +17,10 @@ var config = {
 	prefix: 'test_'
 };
 
+var table = {
+	posts: config.prefix + 'posts'
+};
+
 connection.connect(function (err) {
 	if (!err) {
 		console.log("Database is connected ...");
@@ -26,7 +30,8 @@ connection.connect(function (err) {
 });
 
 app.get('/', function (req, res) {
-	var query = "SELECT * FROM test_posts WHERE 1=1 AND test_posts.post_type = 'post' AND (test_posts.post_status = 'publish' OR test_posts.post_status = 'private') ORDER BY test_posts.post_date DESC LIMIT 0, 10";
+
+	var query = "SELECT * FROM " + table.posts + " AS ps WHERE 1=1 AND ps.post_type = 'post' AND (ps.post_status = 'publish' OR ps.post_status = 'private') ORDER BY ps.post_date DESC LIMIT 0, 10";
 
 	connection.query(query, function (err, rows, fields) {
 		if (err) throw err;
@@ -45,7 +50,7 @@ app.get('/post/:id', function (req, res) {
 		return;
 	}
 
-	var query = "SELECT * FROM test_posts WHERE 1=1 AND test_posts.ID=" + id + " AND (test_posts.post_status = 'publish' OR test_posts.post_status = 'private') ORDER BY test_posts.post_date DESC LIMIT 0, 10";
+	var query = "SELECT * FROM " + table.posts + " AS ps WHERE 1=1 AND ps.ID=" + id + " AND (ps.post_status = 'publish' OR ps.post_status = 'private') ORDER BY ps.post_date DESC LIMIT 0, 10";
 	connection.query(query, function (err, rows, fields) {
 		if (err) throw err;
 
