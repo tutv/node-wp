@@ -40,9 +40,12 @@ app.get('/post/:id', function (req, res) {
 	var id = req.params.id;
 	id = parseInt(id);
 
-	var query = "SELECT * FROM test_posts WHERE 1=1 AND test_posts.ID=" + id + " AND (test_posts.post_status = 'publish' OR test_posts.post_status = 'private') ORDER BY test_posts.post_date DESC LIMIT 0, 10";
-	// var query = "SELECT * FORM test_posts WHERE 1=1 AND test_posts.post_type = 'post' AND test_posts.ID = 1178 AND (test_posts.post_status = 'publish' OR test_posts.post_status = 'private') ORDER BY test_posts.post_date DESC LIMIT 0, 10";
+	if (isNaN(id)) {
+		res.status(404).send('404 Not Found!');
+		return;
+	}
 
+	var query = "SELECT * FROM test_posts WHERE 1=1 AND test_posts.ID=" + id + " AND (test_posts.post_status = 'publish' OR test_posts.post_status = 'private') ORDER BY test_posts.post_date DESC LIMIT 0, 10";
 	connection.query(query, function (err, rows, fields) {
 		if (err) throw err;
 
@@ -55,41 +58,6 @@ app.get('/post/:id', function (req, res) {
 		res.render('post', {post: post});
 	});
 });
-
-/**
-
- connection.connect(function (err) {
-	if (err) throw err;
-	console.log('You are now connected...');
-
-	app.get('/', function (req, res) {
-		var query = "SELECT * FROM test_posts WHERE 1=1 AND test_posts.post_type = 'post' AND (test_posts.post_status = 'publish' OR test_posts.post_status = 'private') ORDER BY test_posts.post_date DESC LIMIT 0, 10";
-
-		connection.query(query, function (err, rows, fields) {
-			if (err) throw err;
-
-			//res.json(rows);
-			res.render('posts', {posts: rows});
-		});
-	});
-
-	app.get('/post/:id', function (req, res) {
-		var id = req.params.id;
-		id = parseInt(id);
-
-		var query = "SELECT * FORM test_posts WHERE 1=1 AND test_posts.post_type = 'post' AND test_posts.ID = 1178 AND (test_posts.post_status = 'publish' OR test_posts.post_status = 'private') ORDER BY test_posts.post_date DESC LIMIT 0, 10";
-
-		connection.query(query, function (err, rows, fields) {
-			console.log(err);
-			if (err) throw err;
-
-			res.json(rows);
-			// res.render('posts', {posts: rows});
-		});
-	});
-});
-
- */
 
 /**
  * Static file
