@@ -69,7 +69,7 @@ app.get('/page/:id', function (req, res) {
 				next = false;
 			}
 
-			res.render('posts', {title: title, posts: rows, paged: {back: back, next: next}});
+			res.render('posts', {cache: true, title: title, posts: rows, paged: {back: back, next: next}});
 		});
 	}
 });
@@ -85,7 +85,7 @@ app.get('/', function (req, res) {
 	connection.query(query, function (err, rows, fields) {
 		if (err) throw err;
 
-		res.render('posts', {title: title, posts: rows, paged: {back: false, next: 2}});
+		res.render('posts', {cache: true, title: title, posts: rows, paged: {back: false, next: 2}});
 	});
 });
 
@@ -128,7 +128,7 @@ app.get('/post/:id', function (req, res) {
 		var post = rows[0];
 
 		var title = post.post_title + ' - ' + wp_config.site_name;
-		res.render('post', {title: title, post: post});
+		res.render('post', {cache: true, title: title, post: post});
 	});
 });
 
