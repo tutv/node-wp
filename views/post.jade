@@ -18,5 +18,5 @@ html
                             div.post-symbol
                             h2.entry-title=post.post_title
                             div.entry-meta
-                                span.posted-on= "27/07/2016"
+                                span.posted-on= (new Date(post.post_date)).toUTCString()
                         div.entry-content!=post.post_content

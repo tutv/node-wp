@@ -1,0 +1,3 @@
+var disqus = {
+	test: "OK!"
+};
