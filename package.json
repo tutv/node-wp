@@ -23,7 +23,6 @@
     "homepage": "https://github.com/tutv95/node-wp#readme",
     "dependencies": {
         "express": "latest",
-        "mysql": "latest",
         "jade": "latest"
     }
 }
