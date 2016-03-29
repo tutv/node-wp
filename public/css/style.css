@@ -1641,10 +1641,6 @@ video {
 	.description-wrapper {
 		margin-bottom: -10px; /* fit featured post images/thumbnails to new mobile header */
 	}
-	.main-navigation,
-	.site-branding {
-		display: none;
-	}
 	.hentry {
 		margin: 80px 0 80px;
 	}
