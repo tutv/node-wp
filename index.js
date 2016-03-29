@@ -19,7 +19,7 @@ var table = {
 	posts: config.prefix + 'posts'
 };
 
-app.enable('view cache');
+// app.enable('view cache');
 
 /**
  * Connect database
