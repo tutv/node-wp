@@ -1,15 +1,16 @@
 doctype html
-html
+html(lang="en-US")
     head
-        title= post.post_title
+        title= title
         meta(charset="utf-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(href="/css/style_2.css", rel="stylesheet")
+        link(href="/css/style.v1.css", rel="stylesheet")
+        meta(name="Blogk - ")
     body.home.blog
         header#masthead.site-header
             div.site-branding
                 a(href="/")
-                    img(src="/images/logo.png")
+                    img(src="/images/logo_blogk.png")
         div#content.site-content
             div#primary.content-area
                 main#main.site-main
@@ -20,4 +21,6 @@ html
                             h2.entry-title=post.post_title
                             div.entry-meta
                                 span.posted-on= (new Date(post.post_date)).toUTCString()
-                        div.entry-content!=post.post_content
+                        div.entry-content!= post.post_content
+        footer#colophon.site-footer
+            div.site-info BlogK - Copyright &copy; 2016.

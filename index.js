@@ -19,6 +19,9 @@ var table = {
 	posts: config.prefix + 'posts'
 };
 
+/**
+ * Connect database
+ */
 connection.connect(function (err) {
 	if (!err) {
 		console.log("Database is connected ...");
@@ -28,18 +31,65 @@ connection.connect(function (err) {
 	}
 });
 
+/**
+ * Paged
+ */
+app.get('/page/:id', function (req, res) {
+	var id = req.params.id;
+	id = parseInt(id);
+
+	if (isNaN(id)) {
+		res.status(404).send('404 Not Found!');
+		return;
+	}
+
+	var title = wp_config.site_name + ' - ' + wp_config.site_tag_name + ' - Page ' + id;
+
+	if (id === 1) {
+		res.redirect('/');
+	} else {
+		var start_select = parseInt(id * 10);
+		var query = "SELECT * FROM " + table.posts + " AS ps WHERE 1=1 AND ps.post_type = 'post' AND (ps.post_status = 'publish' OR ps.post_status = 'private') ORDER BY ps.post_date DESC LIMIT " + start_select + ", 10";
+
+		connection.query(query, function (err, rows, fields) {
+			if (err) throw err;
+
+			/**
+			 * Paging
+			 */
+			var next = id + 1;
+			var back = id - 1;
+			if (rows.length === 0) {
+				next = false;
+				back = 1;
+			}
+			if (rows.length < 10) {
+				next = false;
+			}
+
+			res.render('posts', {title: title, posts: rows, paged: {back: back, next: next}});
+		});
+	}
+});
+
+/**
+ * Home
+ */
 app.get('/', function (req, res) {
+	var title = wp_config.site_name + ' - ' + wp_config.site_tag_name;
 
 	var query = "SELECT * FROM " + table.posts + " AS ps WHERE 1=1 AND ps.post_type = 'post' AND (ps.post_status = 'publish' OR ps.post_status = 'private') ORDER BY ps.post_date DESC LIMIT 0, 10";
 
 	connection.query(query, function (err, rows, fields) {
 		if (err) throw err;
 
-		//res.json(rows);
-		res.render('posts', {posts: rows});
+		res.render('posts', {title: title, posts: rows, paged: {back: false, next: 2}});
 	});
 });
 
+/**
+ * Post
+ */
 app.get('/post/:id', function (req, res) {
 	var id = req.params.id;
 	id = parseInt(id);
@@ -59,7 +109,9 @@ app.get('/post/:id', function (req, res) {
 		}
 
 		var post = rows[0];
-		res.render('post', {post: post});
+
+		var title = post.post_title + ' - ' + wp_config.site_name;
+		res.render('post', {title: title, post: post});
 	});
 });
 

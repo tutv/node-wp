@@ -1,20 +1,24 @@
 doctype html
-html
+html(lang="en-US")
     head
-        title Tu Tran Blog - Chia se nhung gi toi biet
+        title= title
         meta(charset="utf-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(href="/css/style_2.css", rel="stylesheet")
+        link(href="/css/style.v1.css", rel="stylesheet")
     body.home.blog
         header#masthead.site-header
             div.site-branding
                 a(href="/")
-                    img(src="/images/logo.png")
+                    img(src="/images/logo_blogk.png")
         div#content.site-content
             div#primary.content-area
                 main#main.site-main
+                    if (posts.length === 0)
+                        article.no-post
+                            header.entry-header
+                                h2.entry-title Nothing to show
                     each post in posts
-                        article(id="post-" + post.ID, class="post post-275 post type-post status-publish format-standard")
+                        article(id="post-" + post.ID, class="post type-post status-publish format-standard")
                             div.thumbnail-wrap
                             header.entry-header
                                 div.post-symbol
@@ -22,5 +26,16 @@ html
                                     a(href="/post/" + post.ID, rel="bookmark")=post.post_title
                                 div.entry-meta
                                     span.posted-on!= (new Date(post.post_date)).toUTCString()
-                            div.entry-content!=post.post_excerpt
-                                a.more-link(href="/post/" + post.ID) Continue reading
+                            div.entry-content!= post.post_excerpt
+                            a.more-link(href="/post/" + post.ID) Continue reading
+                            div.post-item-divider
+                    div.navigation
+                        ul
+                            if (paged.back)
+                                li
+                                    a(href="/page/" + paged.back) Back
+                            if (paged.next)
+                                li
+                                    a(href="/page/" + paged.next) Next
+        footer#colophon.site-footer
+            div.site-info BlogK - Copyright &copy; 2016.
