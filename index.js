@@ -19,7 +19,7 @@ var table = {
 	posts: config.prefix + 'posts'
 };
 
-// app.enable('view cache');
+app.enable('view cache');
 
 /**
  * Connect database
@@ -85,7 +85,7 @@ app.get('/', function (req, res) {
 	connection.query(query, function (err, rows, fields) {
 		if (err) throw err;
 
-		res.render('posts', {title: title, posts: rows, paged: {back: false, next: 2}});
+		res.render('posts', {cache: true, title: title, posts: rows, paged: {back: false, next: 2}});
 	});
 });
 
