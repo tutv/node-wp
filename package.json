@@ -1,0 +1,29 @@
+{
+    "name": "node-wp",
+    "version": "1.0.0",
+    "description": "Nodejs for WordPress",
+    "main": "index.js",
+    "scripts": {
+        "test": "node index.js",
+        "start": "forever start index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/tutv95/node-wp.git"
+    },
+    "keywords": [
+        "nodejs",
+        "wordpress"
+    ],
+    "author": "tutv95",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/tutv95/node-wp/issues"
+    },
+    "homepage": "https://github.com/tutv95/node-wp#readme",
+    "dependencies": {
+        "express": "lastest",
+        "mysql": "lastest",
+        "jade": "lastest"
+    }
+}
