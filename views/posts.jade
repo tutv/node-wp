@@ -12,15 +12,15 @@ html
                     img(src="/images/logo.png")
         div#content.site-content
             div#primary.content-area
-            main#main.site-main
-                each post in posts
-                    article(id="post-" + post.ID, class="post post-275 post type-post status-publish format-standard")
-                        div.thumbnail-wrap
-                        header.entry-header
-                            div.post-symbol
-                            h2.entry-title
-                                a(href="/post/" + post.ID, rel="bookmark")=post.post_title
-                            div.entry-meta
-                                span.posted-on!= (new Date(post.post_date)).toUTCString()
-                        div.entry-content!=post.post_excerpt
-                            a.more-link(href="/post/" + post.ID) Continue reading
+                main#main.site-main
+                    each post in posts
+                        article(id="post-" + post.ID, class="post post-275 post type-post status-publish format-standard")
+                            div.thumbnail-wrap
+                            header.entry-header
+                                div.post-symbol
+                                h2.entry-title
+                                    a(href="/post/" + post.ID, rel="bookmark")=post.post_title
+                                div.entry-meta
+                                    span.posted-on!= (new Date(post.post_date)).toUTCString()
+                            div.entry-content!=post.post_excerpt
+                                a.more-link(href="/post/" + post.ID) Continue reading
