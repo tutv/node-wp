@@ -88,6 +88,21 @@ app.get('/', function (req, res) {
 });
 
 /**
+ * Test
+ */
+app.get('/test', function (req, res) {
+	var title = wp_config.site_name + ' - ' + wp_config.site_tag_name;
+
+	var query = "SELECT * FROM " + table.posts + " AS ps WHERE 1=1 AND ps.post_type = 'post' AND (ps.post_status = 'publish' OR ps.post_status = 'private') ORDER BY ps.post_date DESC LIMIT 0, 10";
+
+	connection.query(query, function (err, rows, fields) {
+		if (err) throw err;
+
+		res.json(rows);
+	});
+});
+
+/**
  * Post
  */
 app.get('/post/:id', function (req, res) {
