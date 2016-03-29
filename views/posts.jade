@@ -21,5 +21,5 @@ html
                                 a(href="/post/" + post.ID, rel="bookmark")=post.post_title
                             div.entry-meta
                                 span.posted-on!= (new Date(post.post_date)).toUTCString()
-                        div.entry-content!=post.post_content
+                        div.entry-content!=post.post_excerpt
                             a.more-link(href="/post/" + post.ID) Continue reading
