@@ -22,8 +22,8 @@
     },
     "homepage": "https://github.com/tutv95/node-wp#readme",
     "dependencies": {
-        "express": "lastest",
-        "mysql": "lastest",
-        "jade": "lastest"
+        "express": "latest",
+        "mysql": "latest",
+        "jade": "latest"
     }
 }
