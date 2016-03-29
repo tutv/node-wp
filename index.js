@@ -1,20 +1,18 @@
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
-var io = require('socket.io')(http);
-var md5 = require('md5');
-var session = require('express-session');
 var mysql = require('mysql');
+var wp_config = require('./wp-config');
 
 var connection = mysql.createConnection({
-	host    : 'localhost',
-	user    : 'root',
-	password: '',
-	database: 'wordpress'
+	host    : wp_config.host,
+	user    : wp_config.user,
+	password: wp_config.password,
+	database: wp_config.database
 });
 
 var config = {
-	prefix: 'test_'
+	prefix: wp_config.prefix
 };
 
 var table = {

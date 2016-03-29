@@ -10,8 +10,11 @@ $query = "SELECT * FROM test_posts AS ps WHERE 1=1 AND ps.post_type = 'post' AND
 // Perform queries 
 $results = mysqli_query( $con, $query );
 
+$rows = array();
 while ( $row = $results->fetch_assoc() ) {
-	print_r( $row );
+	$rows[] = $row['post_title'];
 }
+
+print_r( json_encode( $rows ) );
 
 mysqli_close( $con );
