@@ -136,7 +136,8 @@ textarea { /* stops iOS from adding rounded corners and glare to inputs and text
 body {
 	min-width: 280px;
 	background: #fff;
-	font-family: "PT Sans", sans-serif;
+	font-family: "Roboto", sans-serif;
+	font-weight: 300;
 }
 body,
 button,
@@ -227,12 +228,12 @@ img {
 	word-wrap: break-word;
 }
 .site-title {
-	font-family: 'Lustria', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	margin: 0;
 	padding: 60px 10px 0 10px;
 	font-size: 52px;
 	line-height: 56px;
-	font-weight: bold;
+	font-weight: 400;
 	text-align: center;
 	text-decoration: none;
 	color: #4B4A47;
@@ -259,18 +260,18 @@ h1, h2, h3, h4, h5, h6 {
 	word-wrap: break-word;
 }
 h1 {
-	font-family: 'Lustria', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	font-size: 42px;
 	line-height:46px;
 	color: #4B4A47;
-	font-weight:bold;
+	font-weight: 400;
 	margin: 50px 0 20px;
 }
 h2 {
-	font-family: 'Lustria', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	font-size: 32px;
 	line-height:36px;
-	font-weight:bold;
+	font-weight: 400;
 	color: #4B4A47;
 	margin: 40px 0 20px;
 }
@@ -731,13 +732,13 @@ a:active {
 }
 .type-page .entry-title,
 .entry-title {
-	font-family: 'Lustria', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	margin: 10px 0 10px 0;
 	font-size: 41px;
 	line-height:50px;
 	color: #4B4A47;
 	text-align:center;
-	font-weight:700;
+	font-weight:400;
 	letter-spacing: 1px;
 	-ms-word-wrap: break-word;
 	word-wrap: break-word;
@@ -756,9 +757,9 @@ a:active {
 	text-align: center;
 	font-size: 42px;
 	line-height: 54px;
-	font-family: 'Lustria', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	padding-bottom: 30px;
-	font-weight: bold;
+	font-weight: 400;
 	-ms-word-wrap: break-word;
 	word-wrap: break-word;
 }
@@ -815,6 +816,7 @@ a:active {
 .comments-title,
 .page-links .intro {
 	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	font-size: 14px;
