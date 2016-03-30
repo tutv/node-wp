@@ -138,7 +138,8 @@ app.get('/post/:id', function (req, res) {
 /**
  * Static file
  */
-app.use(express.static(__dirname + '/public'));
+var oneDay = 86400000;
+app.use(express.static(__dirname + '/public', {maxAge: oneDay}));
 
 /**
  * Set engine template
