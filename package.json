@@ -5,11 +5,12 @@
     "main": "index.js",
     "scripts": {
         "test": "node index.js",
-        "start": "forever start index.js"
+        "start": "forever start index.js",
+        "stop": "forever stop 0"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/tutv95/node-wp.git"
+        "url": "https://github.com/tutv95/node-wp.git"
     },
     "keywords": [
         "nodejs",
@@ -23,6 +24,7 @@
     "homepage": "https://github.com/tutv95/node-wp#readme",
     "dependencies": {
         "express": "latest",
-        "jade": "latest"
+        "jade": "latest",
+        "compression": "latest"
     }
 }

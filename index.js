@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var mysql = require('mysql');
+var compress = require('compression');
 var wp_config = require('./wp-config');
 
 var connection = mysql.createConnection({
@@ -19,6 +20,7 @@ var table = {
 	posts: config.prefix + 'posts'
 };
 
+app.use(compress());
 app.enable('view cache');
 
 /**
